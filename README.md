@@ -30,3 +30,10 @@ minikube service --url nginx
 
 
 # Deploying on AWS EKS
+
+# TODO
+- [x] EKS cluster
+- [x] autoscaler
+- [x] external dns
+- [ ] ingress controller
+- [x] wildcard certificate
