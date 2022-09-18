@@ -3,8 +3,6 @@ import {
     Code,
     enablePrismLineNumbers,
     Fragment,
-    Note,
-    NotesPlugin,
     PrismHighlightPlugin,
     RevealJS,
     Slide,
@@ -17,18 +15,7 @@ import 'prismjs/plugins/line-highlight/prism-line-highlight.css';
 
 enablePrismLineNumbers();
 
-const plugins = [PrismHighlightPlugin, NotesPlugin];
-
-const Main = () => (
-    <Slide>
-        <Code language="tsx">{{code: `<span class="hi"></span>`}}</Code>
-        <Note>test 1</Note>
-        <Fragment transition="highlight-blue">
-            <Code language="tsx">{{code: `<span class="hi"></span>`}}</Code>
-            <Note>test 2</Note>
-        </Fragment>
-    </Slide>
-);
+const plugins = [PrismHighlightPlugin];
 
 const TitleSlide = () => (
     <Slide>
@@ -89,7 +76,8 @@ const ThisIsKubernetes = () => (
         <div style={{display: "flex", flexDirection: 'row'}}>
             <div style={{border: '2px solid white', borderRadius: '10px', margin: '10px'}}>
                 {Array.apply(0, Array(10)).map((value, index) => <img alt={'Server'} src={'assets/server.png'}
-                                                                      width={'100em'} key={`server-${index}`} style={{margin: '2px'}}/>)}
+                                                                      width={'100em'} key={`server-${index}`}
+                                                                      style={{margin: '2px'}}/>)}
             </div>
             <div style={{border: '2px solid white', borderRadius: '10px'}}>
                 <img alt={'React Application'} src={`assets/react.png`} width={'100em'}/>
@@ -97,6 +85,67 @@ const ThisIsKubernetes = () => (
                 <img alt={'Database'} src={`assets/database.png`} width={'100em'}/>
             </div>
         </div>
+    </Slide>
+)
+
+const GettingAccess = () => (
+    <Slide>
+        <h2>Getting Access</h2>
+        <a href={'https://kubernetes.io/docs/tasks/tools/'}>https://kubernetes.io/docs/tasks/tools/</a>
+        <Code language='shell'>
+            {{
+                code: `$ kubectl version --client
+$ aws eks update-kubeconfig --region eu-west-1 --name kubernetes-traineeship
+$ kubectl get pods --all-namespaces`
+            }}
+        </Code>
+        <small>For a more visual tool, use <a href={'https://k8slens.dev/'}>Lens</a></small>
+    </Slide>
+)
+
+const DeployingAnApplication = () => (
+    <Slide>
+        <h3>Deploying an Application</h3>
+        <Code language='javascript'>
+            {{
+                code: `// Create a namespace
+$ 'kubectl create namespace rob'
+// Deploy your application in the namespace
+$ 'kubectl create deployment test --namespace rob --image nginx'`
+            }}
+        </Code>
+    </Slide>
+)
+
+const ViewingYourApplication = () => (
+    <Slide>
+        <h3>Viewing your application</h3>
+        <Code language='javascript'>
+            {{
+                code: `// Get all pods in your namespace
+$ 'kubectl get pods -n rob'
+// Get the logs from your pod
+$ 'kubectl logs test-8499f4f74-f47jv -n rob -f'
+// Port forward to your local machine
+$ 'kubectl port-forward test-8499f4f74-f47jv 8080:80 -n rob'`
+            }}
+        </Code>
+    </Slide>
+)
+
+const ScalingYourApplication = () => (
+    <Slide>
+        <h3>Scaling your application</h3>
+        <Code language='javascript'>
+            {{
+                code: `// Get all cluster nodes
+$ 'kubectl get nodes -o wide'
+// Scale your deployment
+$ 'kubectl scale deployment test -n rob --replicas 10'
+// Wait until all new pods are running
+$ 'kubectl get pods --all-namespaces -w'`
+            }}
+        </Code>
     </Slide>
 )
 
@@ -108,6 +157,10 @@ function App() {
                 <TableOfContents/>
                 <WhatIsKubernetes/>
                 <ThisIsKubernetes/>
+                <GettingAccess/>
+                <DeployingAnApplication/>
+                <ViewingYourApplication/>
+                <ScalingYourApplication/>
             </RevealJS>
         </div>
     );
