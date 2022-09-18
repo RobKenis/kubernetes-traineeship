@@ -149,6 +149,44 @@ $ 'kubectl get pods --all-namespaces -w'`
     </Slide>
 )
 
+const DeployYourOwnApplication = () => (
+    <Slide>
+        <h3>Deploy your own application</h3>
+        <Code language='javascript'>
+            {{
+                code: `$ kubectl edit deployment test -n rob`
+            }}
+        </Code>
+        <Code language='yaml'>
+            {{
+                code: `spec:
+  replicas: 10
+  selector:
+    matchLabels:
+      app: test
+  template:
+    spec:
+      containers:
+      - image: 084518896710.dkr.ecr.eu-west-1.amazonaws.com/kubernetes-traineeship-slides:amd64`
+            }}
+        </Code>
+    </Slide>
+)
+
+const VersioningYourConfiguration = () => (
+    <Slide>
+        <h3>Versioning your configuration</h3>
+        <Code language='javascript'>
+            {{
+                code: `// Get the current manifest as YAML
+$ 'kubectl get deployment test -n rob -o yaml > deployment.yaml'
+// Apply the edited YAML file
+$ 'kubectl apply -f deployment.yaml'`
+            }}
+        </Code>
+    </Slide>
+)
+
 function App() {
     return (
         <div className="App">
@@ -161,6 +199,8 @@ function App() {
                 <DeployingAnApplication/>
                 <ViewingYourApplication/>
                 <ScalingYourApplication/>
+                <DeployYourOwnApplication/>
+                <VersioningYourConfiguration/>
             </RevealJS>
         </div>
     );
