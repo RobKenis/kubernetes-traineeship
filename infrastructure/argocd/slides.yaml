@@ -1,0 +1,54 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: slides
+  name: slides
+  namespace: rob
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: slides
+  template:
+    metadata:
+      labels:
+        app: slides
+    spec:
+      containers:
+        - image: '084518896710.dkr.ecr.eu-west-1.amazonaws.com/kubernetes-traineeship-slides:latest'
+          imagePullPolicy: Always
+          name: slides
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: slides
+  namespace: rob
+spec:
+  selector:
+    app: slides
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 80
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: slides
+  namespace: rob
+spec:
+  ingressClassName: traefik
+  rules:
+    - host: slides.traineeship-2022.axxes.cloud
+      http:
+        paths:
+          - backend:
+              service:
+                name: slides
+                port:
+                  number: 80
+            path: /
+            pathType: Prefix
