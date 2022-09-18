@@ -134,10 +134,6 @@ spec:
                 path: /var/lib/grafana/dashboards/default
         dashboards:
           default:
-            kube-state-metrics-v2:
-              gnetId: 13332
-              revision: 12
-              datasource: Prometheus
             node-exporter-full:
               gnetId: 1860
               revision: 27
@@ -149,14 +145,6 @@ spec:
             kubernetes-views-global:
               gnetId: 15757
               revision: 16
-              datasource: Prometheus
-            kubernetes-views-pods:
-              gnetId: 15760
-              revision: 11
-              datasource: Prometheus
-            kubernetes-views-nodes:
-              gnetId: 15759
-              revision: 9
               datasource: Prometheus
   destination:
     server: "https://kubernetes.default.svc"
