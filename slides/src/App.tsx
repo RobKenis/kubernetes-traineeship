@@ -187,6 +187,36 @@ $ 'kubectl apply -f deployment.yaml'`
     </Slide>
 )
 
+const ServiceDiscovery = () => (
+    <Slide>
+        <h2>Service discovery</h2>
+        <Fragment>
+            <p>Translate <span style={{color: 'orange'}}>172.31.19.38:8080</span> to <span style={{color: 'limegreen'}}>http://backend-service/</span></p>
+        </Fragment>
+    </Slide>
+)
+
+const CreatingAService = () => (
+    <Slide>
+        <h3>Creating a Service</h3>
+        <Code language='yaml'>
+            {{
+                code: `apiVersion: v1
+kind: Service
+metadata:
+  name: my-service
+spec:
+  selector:
+    app.kubernetes.io/name: MyApp
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 9376`
+            }}
+        </Code>
+    </Slide>
+)
+
 function App() {
     return (
         <div className="App">
@@ -201,6 +231,8 @@ function App() {
                 <ScalingYourApplication/>
                 <DeployYourOwnApplication/>
                 <VersioningYourConfiguration/>
+                <ServiceDiscovery/>
+                <CreatingAService/>
             </RevealJS>
         </div>
     );
