@@ -37,7 +37,7 @@ function App() {
                 <Slide>
                     <h3>Kubernetes</h3>
                     <a href="https://github.com/RobKenis/kubernetes-traineeship"><i className="fa fa-bitbucket"></i></a> - <a
-                    href="https://slides.traineeship-2022.axxes.cloud">https://slides.traineeship-2022.axxes.cloud</a>
+                    href="http://slides.traineeship-2022.axxes.cloud">http://slides.traineeship-2022.axxes.cloud</a>
                 </Slide>
             </RevealJS>
         </div>
