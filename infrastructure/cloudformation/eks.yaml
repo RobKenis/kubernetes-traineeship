@@ -82,3 +82,7 @@ Resources:
         - subnet-0c412b2893e1cc980
         - subnet-0de05c6b8c43703c5
         - subnet-061a8897e8694d873
+  SlidesRegistry:
+    Type: AWS::ECR::Repository
+    Properties:
+      RepositoryName: !Join [ '-', [ !Ref AWS::StackName, 'slides' ]]

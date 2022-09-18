@@ -1,0 +1,6 @@
+# ESLint
+.eslintcache
+
+# NodeJS
+node_modules/
+build/
