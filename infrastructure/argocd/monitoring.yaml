@@ -105,6 +105,7 @@ spec:
           ingressClassName: traefik
           hosts:
             - grafana.traineeship-2022.axxes.cloud
+        adminPassword: notAdmin
         plugins:
           - grafana-piechart-panel
         datasources:
