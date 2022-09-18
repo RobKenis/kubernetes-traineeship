@@ -62,13 +62,13 @@ Resources:
     Type: 'AWS::EKS::Cluster'
     Properties:
       Name: !Ref AWS::StackName
-      Version: '1.21'
+      Version: '1.23'
       RoleArn: !GetAtt EksClusterRole.Arn
       ResourcesVpcConfig:
         SubnetIds:
-          - subnet-93c9def5
-          - subnet-6f247435
-          - subnet-29cc2a62
+          - subnet-0c412b2893e1cc980
+          - subnet-0de05c6b8c43703c5
+          - subnet-061a8897e8694d873
   EksNodegroup:
     Type: 'AWS::EKS::Nodegroup'
     Properties:
@@ -77,8 +77,8 @@ Resources:
       ScalingConfig:
         MinSize: 1
         DesiredSize: 1
-        MaxSize: 10
+        MaxSize: 20
       Subnets:
-        - subnet-93c9def5
-        - subnet-6f247435
-        - subnet-29cc2a62
+        - subnet-0c412b2893e1cc980
+        - subnet-0de05c6b8c43703c5
+        - subnet-061a8897e8694d873
