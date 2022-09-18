@@ -75,8 +75,9 @@ spec:
             create: false
           pushgateway:
             create: false
-        persistentVolume:
-          enabled: false
+        server:
+          persistentVolume:
+            enabled: false
   destination:
     server: "https://kubernetes.default.svc"
     namespace: monitoring
