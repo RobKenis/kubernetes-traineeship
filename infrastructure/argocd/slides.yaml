@@ -26,6 +26,9 @@ kind: Service
 metadata:
   name: slides
   namespace: rob
+  annotations:
+    prometheus.io/scrape: "true"
+    prometheus.io/path: "/metrics/prometheus"
 spec:
   selector:
     app: slides

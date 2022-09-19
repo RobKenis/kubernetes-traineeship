@@ -16,3 +16,4 @@ RUN yarn build
 FROM nginx:latest
 
 COPY --from=build /app/build/ /usr/share/nginx/html
+COPY metrics/prometheus /usr/share/nginx/html/metrics/prometheus

@@ -1,0 +1,1 @@
+up{service="slides", server="nginx", path="/metrics/prometheus} 1
