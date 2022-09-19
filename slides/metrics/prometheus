@@ -1,1 +1,3 @@
-slides_custom_metric{service="slides", server="nginx", path="/metrics/prometheus} 420.0
+# HELP slides_custom_metric Some number to add a custom metric.
+# TYPE slides_custom_metric gauge
+slides_custom_metric{service="slides", server="nginx", path="/metrics/prometheus} 420
