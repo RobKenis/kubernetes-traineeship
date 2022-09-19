@@ -217,6 +217,33 @@ spec:
     </Slide>
 )
 
+const CreatingAnIngress = () => (
+    <Slide>
+        <h3>Creating an Ingress</h3>
+        <Code language='yaml'>
+            {{
+                code: `apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: nginx
+spec:
+  ingressClassName: traefik
+  rules:
+    - host: hello.traineeship-2022.axxes.cloud
+      http:
+        paths:
+          - backend:
+              service:
+                name: nginx
+                port:
+                  number: 80
+            path: /
+            pathType: Prefix`
+            }}
+        </Code>
+    </Slide>
+)
+
 function App() {
     return (
         <div className="App">
@@ -233,6 +260,7 @@ function App() {
                 <VersioningYourConfiguration/>
                 <ServiceDiscovery/>
                 <CreatingAService/>
+                <CreatingAnIngress/>
             </RevealJS>
         </div>
     );
