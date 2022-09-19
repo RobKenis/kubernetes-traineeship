@@ -86,3 +86,19 @@ for a while. Describe them to see the reason in recent events.
 
 Spoiler alert: There aren't enough nodes to start all pods. The cluster autoscaler will now
 start more nodes. After they have become available, the new pods will start on the new nodes.
+
+## Health checks
+
+Kubernetes has a built-in way to verify that a Pod is healthy and ready to accept requests.
+This is doing through [Probes](https://kubernetes.io/docs/tasks/configure-pod-container/configure-liveness-readiness-startup-probes/).
+
+Configure a LivenessProbe so Kubernetes knows when to restart the Pod when it is no longer healthy.
+
+```yaml
+    livenessProbe:
+      httpGet:
+        path: /actuator/health
+        port: 8080
+      initialDelaySeconds: 3
+      periodSeconds: 3
+```
