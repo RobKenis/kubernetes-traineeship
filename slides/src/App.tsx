@@ -244,6 +244,13 @@ spec:
     </Slide>
 )
 
+const Feedback = () => (
+    <Slide>
+        <h3>Feedback</h3>
+        <a href={'https://forms.office.com/r/XV1LMrN7pM'}>https://forms.office.com/r/XV1LMrN7pM</a>
+    </Slide>
+)
+
 function App() {
     return (
         <div className="App">
@@ -261,6 +268,7 @@ function App() {
                 <ServiceDiscovery/>
                 <CreatingAService/>
                 <CreatingAnIngress/>
+                <Feedback/>
             </RevealJS>
         </div>
     );
